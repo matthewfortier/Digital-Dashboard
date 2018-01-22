@@ -8,12 +8,23 @@ import {
 }  from 'angular-gridster2';
 import { Router } from '@angular/router';
 
+import { HomeComponent } from './components/home/home.component';
+import { SpeedometerComponent } from './components/speedometer/speedometer.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  entryComponents: [SpeedometerComponent]
 })
 export class AppComponent {
+
+  components = {
+    'HomeComponent': HomeComponent,
+    'SpeedometerComponent': SpeedometerComponent,
+  }
+
+  component = SpeedometerComponent;
 
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
@@ -199,7 +210,8 @@ export class AppComponent {
     };
 
     this.dashboard = [
-      {cols: 10, rows: 5, y: 0, x: 0},
+      {cols: 10, rows: 5, y: 0, x: 0, label: 'SpeedometerComponent'},
+      {cols: 10, rows: 5, y: 0, x: 0, label: 'HomeComponent'},
       /* {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
       {cols: 1, rows: 1, y: 0, x: 4},
       {cols: 1, rows: 1, y: 2, x: 5},

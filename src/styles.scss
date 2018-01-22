@@ -1,7 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+$backgroundColor: #333333;
+
 html, body {
   margin: 0;
   padding: 0;
 
   height: 100%;
+  background-color: #333333;
+}
+
+.gridster-grid {
+  .column, .row {
+    border-color: #444444 !important;
+  }
 }

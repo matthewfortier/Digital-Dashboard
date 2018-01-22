@@ -1,0 +1,100 @@
+body {
+    background-color: #333333;
+}
+
+.speedometer-container {
+  background-color: #333333;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden; }
+
+#speedo {
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow: inset 0 0 150px #FFFFFF;
+  padding: 120px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  #speedo.red {
+    border: 4px solid red;
+    box-shadow: inset 0 0 150px red; }
+  #speedo #speedo-content {
+    height: 100px;
+    width: 100px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    #speedo #speedo-content h1 {
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      color: white;
+      font-size: 75px;
+      text-shadow: 0 0 10px white; }
+      #speedo #speedo-content h1.red {
+        color: red;
+        text-shadow: 0 0 10px red; }
+      #speedo #speedo-content h1:after {
+        content: 'mph';
+        font-size: .3em;
+        position: absolute;
+        padding-top: 50px;
+        padding-left: 5px; }
+  #speedo #rpm {
+    position: absolute;
+    height: 380px;
+    width: 380px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 20px solid white; }
+
+svg {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  height: 400px;
+  width: 400px; }
+  svg .outer {
+    fill: transparent;
+    stroke: #eee;
+    stroke-width: 20;
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1180;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+    transition: all .1s ease-in; }
+    svg .outer.red {
+      stroke: red; }
+
+
+.gridster-grid {
+    .column, .row {
+        border-color: yellow !important
+    }
+}

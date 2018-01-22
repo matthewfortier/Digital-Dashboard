@@ -17,6 +17,10 @@ import { ElectronService } from './providers/electron.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { SpeedometerComponent } from './components/speedometer/speedometer.component';
+
+import { GridsterModule } from 'angular-gridster2';
+import { DynamicModule } from 'ng-dynamic-component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,13 +30,16 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SpeedometerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    GridsterModule,
+    DynamicModule.withComponents([HomeComponent, SpeedometerComponent]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -42,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [ElectronService],
+  entryComponents: [HomeComponent, SpeedometerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
