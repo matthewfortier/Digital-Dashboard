@@ -1,15 +1,18 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { ElectronService } from './providers/electron.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ipcRenderer } from "electron";
 
 import {
   CompactType, DisplayGrid, GridsterComponentInterface, GridsterConfig, GridsterItem, GridsterItemComponentInterface,
   GridType
 }  from 'angular-gridster2';
+import {GridsterItemComponent, GridsterPush, GridsterPushResize, GridsterSwap} from 'angular-gridster2';
 import { Router } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { SpeedometerComponent } from './components/speedometer/speedometer.component';
+import { resolve } from 'url';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +26,6 @@ export class AppComponent {
     'HomeComponent': HomeComponent,
     'SpeedometerComponent': SpeedometerComponent,
   }
-
-  component = SpeedometerComponent;
 
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
@@ -40,7 +41,8 @@ export class AppComponent {
 
   constructor(public electronService: ElectronService,
     private translate: TranslateService,
-    private router: Router) {
+    private router: Router,
+    private ref: ChangeDetectorRef) {
 
     this.windowHeight = window.innerHeight;
     this.windowWidth = window.innerWidth;
@@ -50,6 +52,7 @@ export class AppComponent {
 
     this.calculateSquares(this.windowWidth, this.windowHeight, this.cellCount);
 
+    this.dashboard = [];
     translate.setDefaultLang('en');
 
     if (electronService.isElectron()) {
@@ -73,6 +76,7 @@ export class AppComponent {
 
   static itemChange(item: GridsterItem, itemComponent: GridsterItemComponentInterface) {
     console.info('itemChanged', item, itemComponent);
+    ipcRenderer.send('itemChanged', item);
   }
 
   static itemResize(item: GridsterItem, itemComponent: GridsterItemComponentInterface) {
@@ -137,6 +141,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+
     this.options = {
       gridType: GridType.Fixed,
       compactType: CompactType.None,
@@ -209,10 +214,22 @@ export class AppComponent {
       scrollToNewItems: false
     };
 
-    this.dashboard = [
+    ipcRenderer.send("mainWindowLoaded")
+    ipcRenderer.on("resultSent", function (evt, result) {
+      let list: Array<GridsterItem> = [];
+      this.dashboard = []
+
+      for (var i = 0; i < result.length; i++) {
+        var item: GridsterItem = {cols: result[i].cols, rows: result[i].rows, y: result[i].y, x: result[i].x, label: result[i].name};
+        this.dashboard.push(item);
+        console.log(item);
+      }
+    }.bind(this));
+
+    /* this.dashboard = [
       {cols: 10, rows: 5, y: 0, x: 0, label: 'SpeedometerComponent'},
       {cols: 10, rows: 5, y: 0, x: 0, label: 'HomeComponent'},
-      /* {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
+      {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
       {cols: 1, rows: 1, y: 0, x: 4},
       {cols: 1, rows: 1, y: 2, x: 5},
       {cols: undefined, rows: undefined, y: 1, x: 0},
@@ -221,8 +238,8 @@ export class AppComponent {
       {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
       {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
       {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled'},
-      {cols: 1, rows: 1, y: 2, x: 6, initCallback: AppComponent.itemInit} */
-    ];
+      {cols: 1, rows: 1, y: 2, x: 6, initCallback: AppComponent.itemInit}
+    ]; */
   }
 
   changedOptions() {
