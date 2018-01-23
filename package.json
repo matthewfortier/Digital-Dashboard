@@ -70,7 +70,7 @@
     "cross-env": "5.0.5",
     "css-loader": "0.28.7",
     "cssnano": "3.10.0",
-    "electron": "1.7.8",
+    "electron": "1.7.11",
     "electron-builder": "^19.45.4",
     "electron-rebuild": "^1.7.3",
     "electron-reload": "1.2.1",
