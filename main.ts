@@ -72,6 +72,27 @@ function createWindow() {
     });
   });
 
+  ipcMain.on("mainWindowLoaded", function(event, item) {
+    var speed = 0;
+    var rpmRotation = 1200;
+
+    setInterval(function(){
+
+        try {
+            win.webContents.send('speed', speed);                                                
+            win.webContents.send('rpm', rpmRotation);                                                
+        } catch (error) {
+            // Ignore this for now
+        }
+        if(speed++ >= 120)
+            speed = 0;
+
+        rpmRotation -= 10
+        if(rpmRotation < 240)
+            rpmRotation = 1200;
+    }, 50);
+  });
+
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window

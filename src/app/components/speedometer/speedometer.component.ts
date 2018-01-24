@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashService } from 'app/dash.service';
 
 @Component({
   selector: 'app-speedometer',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpeedometerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dash: DashService) { }
 
   ngOnInit() {
   }

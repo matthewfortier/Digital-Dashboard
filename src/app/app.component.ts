@@ -217,6 +217,7 @@ export class AppComponent {
       scrollToNewItems: false
     };
 
+    ipcRenderer.send("mainWindowLoaded");
     ipcRenderer.send("requestComponents");
     ipcRenderer.on("resultSent", function (evt, result) {
       let list: Array<GridsterItem> = [];
