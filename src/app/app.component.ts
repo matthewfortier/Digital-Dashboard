@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SpeedometerComponent } from './components/speedometer/speedometer.component';
 import { resolve } from 'url';
+import { DashService } from 'app/dash.service';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +43,8 @@ export class AppComponent {
   constructor(public electronService: ElectronService,
     private translate: TranslateService,
     private router: Router,
-    private ref: ChangeDetectorRef) {
+    private ref: ChangeDetectorRef,
+    private dash: DashService) {
 
     this.windowHeight = window.innerHeight;
     this.windowWidth = window.innerWidth;
@@ -53,6 +55,7 @@ export class AppComponent {
     this.calculateSquares(this.windowWidth, this.windowHeight, this.cellCount);
 
     this.dashboard = [];
+    
     translate.setDefaultLang('en');
 
     if (electronService.isElectron()) {
@@ -214,7 +217,7 @@ export class AppComponent {
       scrollToNewItems: false
     };
 
-    ipcRenderer.send("mainWindowLoaded")
+    ipcRenderer.send("requestComponents");
     ipcRenderer.on("resultSent", function (evt, result) {
       let list: Array<GridsterItem> = [];
       this.dashboard = []

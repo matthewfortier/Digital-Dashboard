@@ -45,7 +45,7 @@ function createWindow() {
     win.webContents.openDevTools();
   }
 
-  ipcMain.on("mainWindowLoaded", function () {
+  ipcMain.on("requestComponents", function () {
 
       db.all("SELECT cols, rows, y, x, name FROM components", function(err, rows) {
         win.webContents.send("resultSent", rows);
