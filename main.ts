@@ -1,19 +1,10 @@
-import { app, BrowserWindow, screen, ipcMain} from 'electron';
+import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 import * as url from 'url';
-import { GridsterItem } from 'angular-gridster2/dist/gridsterItem.interface';
-
-var sqlite3 = require('sqlite3').verbose();
-let db = new sqlite3.Database('./DB/_database.db', (err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Connected to the dashboard database.');
-});
 
 if (serve) {
   require('electron-reload')(__dirname, {
@@ -45,31 +36,12 @@ function createWindow() {
     win.webContents.openDevTools();
   }
 
-  ipcMain.on("requestComponents", function () {
-
-      db.all("SELECT cols, rows, y, x, name FROM components", function(err, rows) {
-        win.webContents.send("resultSent", rows);
-      });
-
-  });
-
-  ipcMain.on("itemChanged", function(event, item) {
-
-    let data = [item.cols, item.rows, item.y, item.x, item.label];
-    let sql = `UPDATE components
-                SET cols = ?,
-                rows = ?,
-                y = ?,
-                x = ?
-                WHERE name = ?`;
-
-    db.run(sql, data, function(err) {
-      if (err) {
-        return console.error(err.message);
-      }
-      console.log(`Row(s) updated: ${this.changes}`);
-      
-    });
+  // Emitted when the window is closed.
+  win.on('closed', () => {
+    // Dereference the window object, usually you would store window
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    win = null;
   });
 
   ipcMain.on("mainWindowLoaded", function(event, item) {

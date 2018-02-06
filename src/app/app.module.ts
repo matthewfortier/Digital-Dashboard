@@ -14,7 +14,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ElectronService } from './providers/electron.service';
-import { DashService } from './dash.service';
+import { DashService } from 'app/dash.service';
+
+import { WebviewDirective } from 'app/directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -32,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
+    WebviewDirective,
     SpeedometerComponent
   ],
   imports: [
@@ -50,7 +53,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [ElectronService, DashService],
-  entryComponents: [HomeComponent, SpeedometerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

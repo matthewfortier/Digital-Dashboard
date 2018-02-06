@@ -218,7 +218,7 @@ export class AppComponent {
     };
 
     ipcRenderer.send("mainWindowLoaded");
-    ipcRenderer.send("requestComponents");
+    /* ipcRenderer.send("requestComponents");
     ipcRenderer.on("resultSent", function (evt, result) {
       let list: Array<GridsterItem> = [];
       this.dashboard = []
@@ -228,12 +228,12 @@ export class AppComponent {
         this.dashboard.push(item);
         console.log(item);
       }
-    }.bind(this));
+    }.bind(this)); */
 
-    /* this.dashboard = [
+    this.dashboard = [
       {cols: 10, rows: 5, y: 0, x: 0, label: 'SpeedometerComponent'},
       {cols: 10, rows: 5, y: 0, x: 0, label: 'HomeComponent'},
-      {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
+      /* {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
       {cols: 1, rows: 1, y: 0, x: 4},
       {cols: 1, rows: 1, y: 2, x: 5},
       {cols: undefined, rows: undefined, y: 1, x: 0},
@@ -242,8 +242,8 @@ export class AppComponent {
       {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
       {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
       {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled'},
-      {cols: 1, rows: 1, y: 2, x: 6, initCallback: AppComponent.itemInit}
-    ]; */
+      {cols: 1, rows: 1, y: 2, x: 6, initCallback: AppComponent.itemInit} */
+    ];
   }
 
   changedOptions() {
