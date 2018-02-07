@@ -194,6 +194,7 @@ export class AppComponent {
         delayStart: 0,
         enabled: true,
         stop: AppComponent.eventStop,
+        start: AppComponent.eventStart,
         handles: {
           s: true,
           e: true,

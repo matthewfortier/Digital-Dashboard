@@ -1,11 +1,11 @@
 {
   "name": "angular-electron",
   "version": "2.6.0",
-  "description": "Angular 5 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "description": "Digital OBDII Instrument Cluster developer in Angular / Electron available for all vehicles that have OBDII capabilities",
+  "homepage": "https://matthewfortier.github.io/Capstone-Dashboard/",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Matthew Fortier",
+    "email": "matther2012@gmail.com"
   },
   "keywords": [
     "angular",
