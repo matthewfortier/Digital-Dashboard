@@ -1,6 +1,11 @@
 import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 
+var zerorpc = require("zerorpc");
+
+var client = new zerorpc.Client();
+client.connect("tcp://184.171.150.62:4242");
+
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
@@ -50,8 +55,25 @@ function createWindow() {
 
     setInterval(function(){
 
+      client.invoke("redis", "GET:mph", function(error, res, more) {
+        if(error) {
+            console.error(error);
+        } else {
+            //console.log("UPDATE:", res);
+            try {
+              win.webContents.send('speed', res);                                                
+            } catch (error) {
+                // Ignore this for now
+            }
+        }
+    
+        if(!more) {
+            //console.log("Done.");
+        }
+      });
+
         try {
-            win.webContents.send('speed', speed);                                                
+            win.webContents.send('speed', speed);                 
             win.webContents.send('rpm', rpmRotation);                                                
         } catch (error) {
             // Ignore this for now
@@ -62,7 +84,19 @@ function createWindow() {
         rpmRotation -= 10
         if(rpmRotation < 240)
             rpmRotation = 1200;
-    }, 50);
+    }, 16.6666);
+
+    /* client.invoke("redis", "SET:mph:25", function(error, res, more) {
+        if(error) {
+            console.error(error);
+        } else {
+            console.log("UPDATE:", res);
+        }
+    
+        if(!more) {
+            console.log("Done.");
+        }
+      }); */
   });
 
   // Emitted when the window is closed.
