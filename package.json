@@ -29,7 +29,7 @@
     "electron:test": "electron ./dist",
     "electron:dev": "npm run build && electron ./dist",
     "electron:prod": "npm run build:prod && electron ./dist",
-    "electron:linux": "npm run build:prod && npx electron-builder build --linux",
+    "electron:linux": "npm run build:prod && npx electron-builder build --linux --all",
     "electron:windows": "npm run build:prod && npx electron-builder build --windows",
     "electron:mac": "npm run build:prod && npx electron-builder build --mac",
     "test": "karma start ./karma.conf.js",
