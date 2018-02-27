@@ -26,7 +26,8 @@ function createWindow() {
     x: 0,
     y: 0,
     width: 1920,
-    height: 720
+    height: 720,
+    'titleBarStyle': 'hidden'
   });
 
   // and load the index.html of the app.
@@ -38,7 +39,7 @@ function createWindow() {
 
   // Open the DevTools.
   if (serve) {
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
   }
 
   // Emitted when the window is closed.
@@ -52,6 +53,7 @@ function createWindow() {
   ipcMain.on("mainWindowLoaded", function(event, item) {
     var speed = 0;
     var rpmRotation = 1200;
+    var range = 100;
 
     setInterval(function(){
 
@@ -74,12 +76,16 @@ function createWindow() {
 
         try {
             win.webContents.send('speed', speed);                 
-            win.webContents.send('rpm', rpmRotation);                                                
+            win.webContents.send('rpm', rpmRotation);
+            win.webContents.send('range', range);                                                
         } catch (error) {
             // Ignore this for now
         }
         if(speed++ >= 120)
-            speed = 0;
+          speed = 0;
+
+        if(range-- <= 0)
+          range = 100;
 
         rpmRotation -= 10
         if(rpmRotation < 240)

@@ -237,10 +237,10 @@ export class AppComponent {
     }.bind(this)); */
 
     this.dashboard = [
-      {cols: 19, rows: 18, y: 5, x: 18, label: 'SpeedometerComponent'},
-      {cols: 14, rows: 14, y: 7, x: 3, label: 'TachometerComponent'},
-      {cols: 5, rows: 2, y: 1, x: 49, label: 'ContextComponent'},
-      {cols: 16, rows: 5, y: 12, x: 38, label: 'RangeComponent'},
+      {cols: 19, rows: 18, y: 3, x: 23, label: 'SpeedometerComponent'},
+      {cols: 14, rows: 14, y: 5, x: 6, label: 'TachometerComponent'},
+      {cols: 5, rows: 2, y: 1, x: 58, label: 'ContextComponent'},
+      {cols: 16, rows: 7, y: 9, x: 45, label: 'RangeComponent'},
       /* {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
       {cols: 1, rows: 1, y: 0, x: 4},
       {cols: 1, rows: 1, y: 2, x: 5},

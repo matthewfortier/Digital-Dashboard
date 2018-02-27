@@ -14,6 +14,7 @@ export class DashService {
   dashboard: Array<GridsterItem>;
   speed: Number;
   rpm: Number;
+  range: Number;
 
   constructor(public electronService: ElectronService) {
 
@@ -23,6 +24,10 @@ export class DashService {
 
     ipcRenderer.on("rpm", function (evt, result) {
       this.rpm = result;
+    }.bind(this));
+
+    ipcRenderer.on("range", function (evt, result) {
+      this.range = result;
     }.bind(this));
 
   }
