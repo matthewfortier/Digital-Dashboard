@@ -8,12 +8,12 @@ html, body {
   padding: 0;
 
   height: 100%;
-  background-color: #333333;
+  background-color: #11121a;
 }
 
 .gridster-grid {
   .column, .row {
-    border-color: #333333 !important;
+    border-color: lighten(#11121a, 10) !important;
   }
 }
 

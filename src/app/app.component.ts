@@ -10,10 +10,13 @@ import {
 import {GridsterItemComponent, GridsterPush, GridsterPushResize, GridsterSwap} from 'angular-gridster2';
 import { Router } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
 import { SpeedometerComponent } from './components/speedometer/speedometer.component';
 import { resolve } from 'url';
 import { DashService } from 'app/dash.service';
+import { TachometerComponent } from './components/tachometer/tachometer.component';
+import { ContextComponent } from './components/context/context.component';
+import { RangeComponent } from './components/range/range.component';
+
 
 @Component({
   selector: 'app-root',
@@ -24,8 +27,10 @@ import { DashService } from 'app/dash.service';
 export class AppComponent {
 
   components = {
-    'HomeComponent': HomeComponent,
     'SpeedometerComponent': SpeedometerComponent,
+    'TachometerComponent': TachometerComponent,
+    'ContextComponent': ContextComponent,
+    'RangeComponent': RangeComponent
   }
 
   options: GridsterConfig;
@@ -232,8 +237,10 @@ export class AppComponent {
     }.bind(this)); */
 
     this.dashboard = [
-      {cols: 10, rows: 5, y: 0, x: 0, label: 'SpeedometerComponent'},
-      {cols: 10, rows: 5, y: 0, x: 0, label: 'HomeComponent'},
+      {cols: 19, rows: 18, y: 5, x: 18, label: 'SpeedometerComponent'},
+      {cols: 14, rows: 14, y: 7, x: 3, label: 'TachometerComponent'},
+      {cols: 5, rows: 2, y: 1, x: 49, label: 'ContextComponent'},
+      {cols: 16, rows: 5, y: 12, x: 38, label: 'RangeComponent'},
       /* {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
       {cols: 1, rows: 1, y: 0, x: 4},
       {cols: 1, rows: 1, y: 2, x: 5},

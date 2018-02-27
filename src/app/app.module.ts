@@ -19,11 +19,13 @@ import { DashService } from 'app/dash.service';
 import { WebviewDirective } from 'app/directives/webview.directive';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { SpeedometerComponent } from './components/speedometer/speedometer.component';
 
 import { GridsterModule } from 'angular-gridster2';
 import { DynamicModule } from 'ng-dynamic-component';
+import { TachometerComponent } from './components/tachometer/tachometer.component';
+import { ContextComponent } from './components/context/context.component';
+import { RangeComponent } from './components/range/range.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,9 +35,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     WebviewDirective,
-    SpeedometerComponent
+    SpeedometerComponent,
+    TachometerComponent,
+    ContextComponent,
+    RangeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     GridsterModule,
-    DynamicModule.withComponents([HomeComponent, SpeedometerComponent]),
+    DynamicModule.withComponents([SpeedometerComponent, TachometerComponent, ContextComponent, RangeComponent]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

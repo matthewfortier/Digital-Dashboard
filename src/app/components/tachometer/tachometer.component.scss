@@ -1,0 +1,43 @@
+body {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative
+  }
+  
+  #tacho {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+  
+    border: 8px solid #9cf9ec;
+    border-radius: 50%;
+    box-shadow: inset 0 0 350px #9cf9ec;
+    margin: 0 auto;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #tacho-content {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    text-align: center;
+  
+    #rpm {
+      font-size: 65px;
+      color: white;
+    }
+  
+    #rpm-label {
+      font-size: 20px;
+      font-weight: bold;
+      color: #999;
+      text-align: center;
+    }
+  }

@@ -61,7 +61,7 @@ function createWindow() {
         } else {
             //console.log("UPDATE:", res);
             try {
-              win.webContents.send('speed', res);                                                              
+              //win.webContents.send('speed', res);                                                              
             } catch (error) {
                 // Ignore this for now
             }
@@ -73,7 +73,7 @@ function createWindow() {
       });
 
         try {
-            //win.webContents.send('speed', speed);                 
+            win.webContents.send('speed', speed);                 
             win.webContents.send('rpm', rpmRotation);                                                
         } catch (error) {
             // Ignore this for now
@@ -84,7 +84,7 @@ function createWindow() {
         rpmRotation -= 10
         if(rpmRotation < 240)
             rpmRotation = 1200;
-    }, 16.6666);
+    }, 50);
 
     /* client.invoke("redis", "SET:mph:25", function(error, res, more) {
         if(error) {
