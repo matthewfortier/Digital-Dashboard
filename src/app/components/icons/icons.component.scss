@@ -1,0 +1,20 @@
+.icons-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .icon {
+        span {
+            font-size: 38px;
+            color: #9cf9ec;
+            margin-left: 20px;
+        }
+
+        i:before {
+            font-size: 48px;
+            color: #999999;
+        }
+    }
+}

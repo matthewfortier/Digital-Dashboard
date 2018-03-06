@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashService } from '../../dash.service'
+import { SettingsService } from '../../settings.service'
 
 @Component({
   selector: 'app-range',
@@ -8,7 +9,7 @@ import { DashService } from '../../dash.service'
 })
 export class RangeComponent implements OnInit {
 
-  constructor(private dash: DashService) { }
+  constructor(private dash: DashService, private settings: SettingsService) { }
 
   ngOnInit() {
   }

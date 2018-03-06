@@ -4,8 +4,8 @@
     <span>{{ this.dash.range }}%</span>
   </div>
   <div class="progress">
-    <div class="progress-bar-background"></div>
-    <div class="progress-bar" [ngStyle]="{'width':this.dash.range + '%'}"></div>
+    <div class="progress-bar-background" [ngStyle]="{'backgroundColor': this.settings.darken(this.settings.bgColor, 10)}"></div>
+    <div class="progress-bar" [ngStyle]="{'width':this.dash.range + '%', 'backgroundColor': this.settings.sColor}"></div>
   </div>
   <div class="range-footer">
     <span>18.7 avg</span>

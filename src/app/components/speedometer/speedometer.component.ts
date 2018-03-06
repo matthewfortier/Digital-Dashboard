@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashService } from 'app/dash.service';
+import { SettingsService } from 'app/settings.service'
 
 @Component({
   selector: 'app-speedometer',
@@ -8,7 +9,11 @@ import { DashService } from 'app/dash.service';
 })
 export class SpeedometerComponent implements OnInit {
 
-  constructor(private dash: DashService) { }
+  mph: Boolean = true;
+
+  constructor(private dash: DashService, private settings: SettingsService) {
+    this.mph = this.settings.speedUnit == "mph";
+  }
 
   ngOnInit() {
   }

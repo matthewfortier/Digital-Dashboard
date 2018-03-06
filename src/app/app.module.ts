@@ -26,6 +26,9 @@ import { DynamicModule } from 'ng-dynamic-component';
 import { TachometerComponent } from './components/tachometer/tachometer.component';
 import { ContextComponent } from './components/context/context.component';
 import { RangeComponent } from './components/range/range.component';
+import { SettingsFlyoutComponent } from './components/settings-flyout/settings-flyout.component';
+import { SettingsService } from './settings.service';
+import { IconsComponent } from './components/icons/icons.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SpeedometerComponent,
     TachometerComponent,
     ContextComponent,
-    RangeComponent
+    RangeComponent,
+    SettingsFlyoutComponent,
+    IconsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     GridsterModule,
-    DynamicModule.withComponents([SpeedometerComponent, TachometerComponent, ContextComponent, RangeComponent]),
+    DynamicModule.withComponents([SpeedometerComponent, TachometerComponent, ContextComponent, RangeComponent, IconsComponent]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -56,7 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService, DashService],
+  providers: [ElectronService, DashService, SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

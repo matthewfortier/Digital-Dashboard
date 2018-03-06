@@ -1,5 +1,5 @@
 <div class="tachometer-container">
-  <section id="tacho">
+  <section id="tacho" [ngStyle]="{'border-color': this.settings.sColor, 'box-shadow': 'inset 0 0 350px' + this.settings.sColor}">
     <div id="tacho-content">
         <span id="rpm">{{ this.dash.rpm }}</span> <br>
         <span id="rpm-label">rpm</span>

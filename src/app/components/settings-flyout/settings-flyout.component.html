@@ -1,0 +1,38 @@
+<div class="flyout-container" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 5)">
+    <span>Dashboard Settings</span>
+    <div class="settings-container">
+        <div class="setting">
+            <div class="setting-content">
+                <label for="speed-unit">Speed Unit</label>
+                <select name="speed-uni" id="" value="{{ this.settings.speedUnit }}" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)" (change)="changeUnit($event)">
+                    <option value="mph">mph</option>
+                    <option value="kph">kph</option>
+                </select>
+            </div>
+        </div>
+        <div class="setting">
+            <div class="setting-content">
+                <label for="mac">OBDII MAC Address</label>
+                <input name="mac "type="text" value="{{ this.settings.macAddress }}" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)">
+            </div>
+        </div>
+        <div class="setting">
+            <div class="setting-content">
+                <label for="mac">Background Color</label>
+                <input id="picker" class="jscolor" [(ngModel)]="this.settings.bgColor" (change)="changeBg($event)">
+            </div>
+        </div>
+        <div class="setting">
+            <div class="setting-content">
+                <label for="mac">Primary Color</label>
+                <input id="picker" class="jscolor" [(ngModel)]="this.settings.pColor" (change)="changePrimary($event)">
+            </div>
+        </div>
+        <div class="setting">
+            <div class="setting-content">
+                <label for="mac">Secondary Color</label>
+                <input id="picker" class="jscolor" [(ngModel)]="this.settings.sColor" (change)="changeSecondary($event)">
+            </div>
+        </div>
+    </div>
+</div>

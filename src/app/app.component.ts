@@ -16,6 +16,9 @@ import { DashService } from 'app/dash.service';
 import { TachometerComponent } from './components/tachometer/tachometer.component';
 import { ContextComponent } from './components/context/context.component';
 import { RangeComponent } from './components/range/range.component';
+import { IconsComponent } from './components/icons/icons.component';
+import { SettingsService } from './settings.service'
+import { Observable } from 'rxjs/Rx';
 
 
 @Component({
@@ -30,7 +33,8 @@ export class AppComponent {
     'SpeedometerComponent': SpeedometerComponent,
     'TachometerComponent': TachometerComponent,
     'ContextComponent': ContextComponent,
-    'RangeComponent': RangeComponent
+    'RangeComponent': RangeComponent,
+    'IconsComponent': IconsComponent
   }
 
   options: GridsterConfig;
@@ -45,11 +49,14 @@ export class AppComponent {
   cellSize: number;
   cellCount: Number = 1500;
 
+  bgColor: String;
+
   constructor(public electronService: ElectronService,
     private translate: TranslateService,
     private router: Router,
     private ref: ChangeDetectorRef,
-    private dash: DashService) {
+    private dash: DashService,
+    private settings: SettingsService) {
 
     this.windowHeight = window.innerHeight;
     this.windowWidth = window.innerWidth;
@@ -62,6 +69,8 @@ export class AppComponent {
     this.dashboard = [];
     
     translate.setDefaultLang('en');
+
+    this.bgColor = this.settings.bgColor;
 
     if (electronService.isElectron()) {
       console.log('Mode electron');
@@ -149,6 +158,11 @@ export class AppComponent {
   }
 
   ngOnInit() {
+
+    setInterval(function() {
+      console.log("Test")
+      this.bgColor = "#999333";
+    },1000)
 
     this.options = {
       gridType: GridType.Fixed,
@@ -241,16 +255,7 @@ export class AppComponent {
       {cols: 14, rows: 14, y: 5, x: 6, label: 'TachometerComponent'},
       {cols: 5, rows: 2, y: 1, x: 58, label: 'ContextComponent'},
       {cols: 16, rows: 7, y: 9, x: 45, label: 'RangeComponent'},
-      /* {cols: 2, rows: 2, y: 0, x: 2, hasContent: true},
-      {cols: 1, rows: 1, y: 0, x: 4},
-      {cols: 1, rows: 1, y: 2, x: 5},
-      {cols: undefined, rows: undefined, y: 1, x: 0},
-      {cols: 1, rows: 1, y: undefined, x: undefined},
-      {cols: 2, rows: 2, y: 3, x: 5, minItemRows: 2, minItemCols: 2, label: 'Min rows & cols = 2'},
-      {cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2'},
-      {cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled'},
-      {cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled'},
-      {cols: 1, rows: 1, y: 2, x: 6, initCallback: AppComponent.itemInit} */
+      {cols: 6, rows: 11, y: 11, x: 1, label: 'IconsComponent'},
     ];
   }
 

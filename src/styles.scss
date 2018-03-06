@@ -8,7 +8,17 @@ html, body {
   padding: 0;
 
   height: 100%;
-  background-color: #11121a;
+  //background-color: #11121a;
+  overflow: hidden;
+
+  font-family: 'Roboto', sans-serif
+}
+
+app-root {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
 }
 
 .gridster-grid {
@@ -19,4 +29,21 @@ html, body {
 
 gridster-item {
   background: transparent !important;
+}
+
+settings-flyout {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 25vw;
+  display: block;
+  background-color: #222;
+  z-index: 9998;
+  transition: all .2s ease-in-out;
+
+  &.hidden {
+    right: -25vw;
+    transition: all .2s ease-in-out;
+  }
 }

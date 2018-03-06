@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashService } from 'app/dash.service';
+import { SettingsService } from 'app/settings.service'
 
 @Component({
   selector: 'app-tachometer',
@@ -8,7 +9,7 @@ import { DashService } from 'app/dash.service';
 })
 export class TachometerComponent implements OnInit {
 
-  constructor(private dash: DashService) { }
+  constructor(private dash: DashService, private settings: SettingsService) { }
 
   ngOnInit() {
   }

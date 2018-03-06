@@ -57,7 +57,7 @@ function createWindow() {
 
     setInterval(function(){
 
-      client.invoke("redis", "GET:mph", function(error, res, more) {
+      /* client.invoke("redis", "GET:mph", function(error, res, more) {
         if(error) {
             console.error(error);
         } else {
@@ -72,7 +72,7 @@ function createWindow() {
         if(!more) {
             //console.log("Done.");
         }
-      });
+      }); */
 
         try {
             win.webContents.send('speed', speed);                 

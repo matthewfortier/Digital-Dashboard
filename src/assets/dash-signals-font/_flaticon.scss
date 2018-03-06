@@ -1,0 +1,99 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 22/06/2016 15:24
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-air-conditioning:before { content: "\f100"; }
+.flaticon-air-outlet:before { content: "\f101"; }
+.flaticon-airbag:before { content: "\f102"; }
+.flaticon-battery:before { content: "\f103"; }
+.flaticon-brake-system-warning:before { content: "\f104"; }
+.flaticon-dome-light:before { content: "\f105"; }
+.flaticon-doors:before { content: "\f106"; }
+.flaticon-engine-coolant:before { content: "\f107"; }
+.flaticon-fog-light:before { content: "\f108"; }
+.flaticon-fuel:before { content: "\f109"; }
+.flaticon-fuel-filling:before { content: "\f10a"; }
+.flaticon-glowplug:before { content: "\f10b"; }
+.flaticon-hazard:before { content: "\f10c"; }
+.flaticon-high-beam:before { content: "\f10d"; }
+.flaticon-hood:before { content: "\f10e"; }
+.flaticon-light:before { content: "\f10f"; }
+.flaticon-low-beam:before { content: "\f110"; }
+.flaticon-malfunction-indicador:before { content: "\f111"; }
+.flaticon-oil:before { content: "\f112"; }
+.flaticon-parking-lights:before { content: "\f113"; }
+.flaticon-rear-window-defrost:before { content: "\f114"; }
+.flaticon-recirculation:before { content: "\f115"; }
+.flaticon-seatbelt:before { content: "\f116"; }
+.flaticon-trunk:before { content: "\f117"; }
+.flaticon-turn-signals:before { content: "\f118"; }
+.flaticon-ventilating-fan:before { content: "\f119"; }
+.flaticon-warning:before { content: "\f11a"; }
+.flaticon-windshield-defrost:before { content: "\f11b"; }
+.flaticon-windshield-washer:before { content: "\f11c"; }
+.flaticon-winshield-wiper:before { content: "\f11d"; }
+    
+    $font-Flaticon-air-conditioning: "\f100";
+    $font-Flaticon-air-outlet: "\f101";
+    $font-Flaticon-airbag: "\f102";
+    $font-Flaticon-battery: "\f103";
+    $font-Flaticon-brake-system-warning: "\f104";
+    $font-Flaticon-dome-light: "\f105";
+    $font-Flaticon-doors: "\f106";
+    $font-Flaticon-engine-coolant: "\f107";
+    $font-Flaticon-fog-light: "\f108";
+    $font-Flaticon-fuel: "\f109";
+    $font-Flaticon-fuel-filling: "\f10a";
+    $font-Flaticon-glowplug: "\f10b";
+    $font-Flaticon-hazard: "\f10c";
+    $font-Flaticon-high-beam: "\f10d";
+    $font-Flaticon-hood: "\f10e";
+    $font-Flaticon-light: "\f10f";
+    $font-Flaticon-low-beam: "\f110";
+    $font-Flaticon-malfunction-indicador: "\f111";
+    $font-Flaticon-oil: "\f112";
+    $font-Flaticon-parking-lights: "\f113";
+    $font-Flaticon-rear-window-defrost: "\f114";
+    $font-Flaticon-recirculation: "\f115";
+    $font-Flaticon-seatbelt: "\f116";
+    $font-Flaticon-trunk: "\f117";
+    $font-Flaticon-turn-signals: "\f118";
+    $font-Flaticon-ventilating-fan: "\f119";
+    $font-Flaticon-warning: "\f11a";
+    $font-Flaticon-windshield-defrost: "\f11b";
+    $font-Flaticon-windshield-washer: "\f11c";
+    $font-Flaticon-winshield-wiper: "\f11d";
