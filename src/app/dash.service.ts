@@ -15,6 +15,7 @@ export class DashService {
   speed: Number;
   rpm: Number;
   range: Number;
+  odom: Number;
 
   constructor(public electronService: ElectronService) {
 
@@ -28,6 +29,10 @@ export class DashService {
 
     ipcRenderer.on("range", function (evt, result) {
       this.range = result;
+    }.bind(this));
+
+    ipcRenderer.on("odom", function (evt, result) {
+      this.odom = result;
     }.bind(this));
 
   }

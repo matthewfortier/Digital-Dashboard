@@ -1,11 +1,6 @@
 import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 
-var zerorpc = require("zerorpc");
-
-var client = new zerorpc.Client();
-client.connect("tcp://184.171.150.62:4242");
-
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
@@ -54,6 +49,7 @@ function createWindow() {
     var speed = 0;
     var rpmRotation = 1200;
     var range = 100;
+    var odom = 100000;
 
     setInterval(function(){
 
@@ -77,7 +73,8 @@ function createWindow() {
         try {
             win.webContents.send('speed', speed);                 
             win.webContents.send('rpm', rpmRotation);
-            win.webContents.send('range', range);                                                
+            win.webContents.send('range', range);
+            win.webContents.send('odom', odom);                                                
         } catch (error) {
             // Ignore this for now
         }
@@ -90,6 +87,8 @@ function createWindow() {
         rpmRotation -= 10
         if(rpmRotation < 240)
             rpmRotation = 1200;
+
+        odom++
     }, 50);
 
     /* client.invoke("redis", "SET:mph:25", function(error, res, more) {

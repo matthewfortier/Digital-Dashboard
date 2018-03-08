@@ -29,6 +29,7 @@ import { RangeComponent } from './components/range/range.component';
 import { SettingsFlyoutComponent } from './components/settings-flyout/settings-flyout.component';
 import { SettingsService } from './settings.service';
 import { IconsComponent } from './components/icons/icons.component';
+import { OdometerComponent } from './components/odometer/odometer.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContextComponent,
     RangeComponent,
     SettingsFlyoutComponent,
-    IconsComponent
+    IconsComponent,
+    OdometerComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     GridsterModule,
-    DynamicModule.withComponents([SpeedometerComponent, TachometerComponent, ContextComponent, RangeComponent, IconsComponent]),
+    DynamicModule.withComponents([SpeedometerComponent, TachometerComponent, ContextComponent, RangeComponent, IconsComponent, OdometerComponent]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

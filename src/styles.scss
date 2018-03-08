@@ -14,13 +14,6 @@ html, body {
   font-family: 'Roboto', sans-serif
 }
 
-app-root {
-  height: 100vh;
-  width: 100vw;
-  background-color: black;
-  color: white;
-}
-
 .gridster-grid {
   .column, .row {
     border-color: lighten(#11121a, 10) !important;

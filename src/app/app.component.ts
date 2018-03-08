@@ -17,6 +17,7 @@ import { TachometerComponent } from './components/tachometer/tachometer.componen
 import { ContextComponent } from './components/context/context.component';
 import { RangeComponent } from './components/range/range.component';
 import { IconsComponent } from './components/icons/icons.component';
+import { OdometerComponent } from './components/odometer/odometer.component';
 import { SettingsService } from './settings.service'
 import { Observable } from 'rxjs/Rx';
 
@@ -34,7 +35,8 @@ export class AppComponent {
     'TachometerComponent': TachometerComponent,
     'ContextComponent': ContextComponent,
     'RangeComponent': RangeComponent,
-    'IconsComponent': IconsComponent
+    'IconsComponent': IconsComponent,
+    'OdometerComponent': OdometerComponent
   }
 
   options: GridsterConfig;
@@ -251,11 +253,12 @@ export class AppComponent {
     }.bind(this)); */
 
     this.dashboard = [
-      {cols: 19, rows: 18, y: 3, x: 23, label: 'SpeedometerComponent'},
-      {cols: 14, rows: 14, y: 5, x: 6, label: 'TachometerComponent'},
+      {cols: 19, rows: 18, y: 2, x: 23, label: 'SpeedometerComponent'},
+      {cols: 14, rows: 14, y: 4, x: 7, label: 'TachometerComponent'},
       {cols: 5, rows: 2, y: 1, x: 58, label: 'ContextComponent'},
-      {cols: 16, rows: 7, y: 9, x: 45, label: 'RangeComponent'},
-      {cols: 6, rows: 11, y: 11, x: 1, label: 'IconsComponent'},
+      {cols: 18, rows: 7, y: 8, x: 44, label: 'RangeComponent'},
+      {cols: 6, rows: 11, y: 6, x: 0, label: 'IconsComponent'},
+      {cols: 11, rows: 3, y: 21, x: 27, label: 'OdometerComponent'},
     ];
   }
 
