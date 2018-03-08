@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DashService } from 'app/dash.service';
-import { SettingsService } from 'app/settings.service'
+import { DashService } from '../../dash.service';
+import { SettingsService } from '../../settings.service';
 
 @Component({
   selector: 'app-speedometer',

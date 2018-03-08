@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 import { SpeedometerComponent } from './components/speedometer/speedometer.component';
 import { resolve } from 'url';
-import { DashService } from 'app/dash.service';
+import { DashService } from './dash.service';
 import { TachometerComponent } from './components/tachometer/tachometer.component';
 import { ContextComponent } from './components/context/context.component';
 import { RangeComponent } from './components/range/range.component';
