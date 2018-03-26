@@ -1,10 +1,17 @@
-import { Injectable } from '@angular/core';
 import {
   CompactType, DisplayGrid, GridsterComponentInterface, GridsterConfig, GridsterItem, GridsterItemComponentInterface,
   GridType
 }  from 'angular-gridster2';
 
-import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+
+import { Socket } from 'ng-socket-io';
+
+export interface Dash {
+  speed: string;
+}
 
 @Injectable()
 export class DashService {
@@ -15,7 +22,11 @@ export class DashService {
   range: Number;
   odom: Number;
 
-  constructor() {
+  constructor(private socket: Socket) {
+
+    socket.on("ecuData", function(msg) {
+      this.speed = msg.mph;
+    }.bind(this))
 
     // ipcRenderer.on("speed", function (evt, result) {
     //   this.speed = result;

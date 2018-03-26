@@ -26,6 +26,9 @@ import { SettingsService } from './settings.service';
 import { IconsComponent } from './components/icons/icons.component';
 import { OdometerComponent } from './components/odometer/odometer.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +48,7 @@ import { OdometerComponent } from './components/odometer/odometer.component';
     AppRoutingModule,
     GridsterModule,
     DynamicModule.withComponents([SpeedometerComponent, TachometerComponent, ContextComponent, RangeComponent, IconsComponent, OdometerComponent]),
+    SocketIoModule.forRoot(config),
   ],
   providers: [DashService, SettingsService],
   bootstrap: [AppComponent]

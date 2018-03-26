@@ -18,6 +18,7 @@ import { OdometerComponent } from './components/odometer/odometer.component';
 import { SettingsService } from './settings.service'
 import { Observable } from 'rxjs/Rx';
 
+import { Socket } from 'ng-socket-io';
 
 @Component({
   selector: 'app-root',
@@ -54,7 +55,8 @@ export class AppComponent {
     private router: Router,
     private ref: ChangeDetectorRef,
     private dash: DashService,
-    private settings: SettingsService) {
+    private settings: SettingsService,
+    private socket: Socket) {
 
     this.windowHeight = window.innerHeight;
     this.windowWidth = window.innerWidth;
@@ -67,6 +69,8 @@ export class AppComponent {
     this.dashboard = [];
     
     this.bgColor = this.settings.bgColor;
+
+    socket.emit("connection");
   }
 
   static eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
