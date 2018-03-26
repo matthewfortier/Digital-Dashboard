@@ -863,9 +863,9 @@ var jsc = {
 		return paletteObj;
 	},
 
-
+	
 	createSliderGradient : function () {
-
+		
 		var sliderObj = {
 			elm: null,
 			draw: null

@@ -1,14 +1,14 @@
-import { AngularElectronPage } from './app.po';
-import { browser, element, by } from 'protractor';
+import { AppPage } from './app.po';
 
-describe('angular-electron App', () => {
-  let page: AngularElectronPage;
+describe('capstone-web App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new AngularElectronPage();
+    page = new AppPage();
   });
 
-  it('should display message saying App works !', () => {
-    expect(element(by.css('app-home h1')).getText()).toMatch('App works !');
+  it('should display welcome message', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

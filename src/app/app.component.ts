@@ -1,7 +1,4 @@
 import {ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import { ElectronService } from './providers/electron.service';
-import { TranslateService } from '@ngx-translate/core';
-import { ipcRenderer } from "electron";
 
 import {
   CompactType, DisplayGrid, GridsterComponentInterface, GridsterConfig, GridsterItem, GridsterItemComponentInterface,
@@ -53,8 +50,7 @@ export class AppComponent {
 
   bgColor: String;
 
-  constructor(public electronService: ElectronService,
-    private translate: TranslateService,
+  constructor(
     private router: Router,
     private ref: ChangeDetectorRef,
     private dash: DashService,
@@ -70,19 +66,7 @@ export class AppComponent {
 
     this.dashboard = [];
     
-    translate.setDefaultLang('en');
-
     this.bgColor = this.settings.bgColor;
-
-    if (electronService.isElectron()) {
-      console.log('Mode electron');
-      // Check if electron is correctly injected (see externals in webpack.config.js)
-      console.log('c', electronService.ipcRenderer);
-      // Check if nodeJs childProcess is correctly injected (see externals in webpack.config.js)
-      console.log('c', electronService.childProcess);
-    } else {
-      console.log('Mode web');
-    }
   }
 
   static eventStop(item: GridsterItem, itemComponent: GridsterItemComponentInterface, event: MouseEvent) {
@@ -95,7 +79,7 @@ export class AppComponent {
 
   static itemChange(item: GridsterItem, itemComponent: GridsterItemComponentInterface) {
     console.info('itemChanged', item, itemComponent);
-    ipcRenderer.send('itemChanged', item);
+    //ipcRenderer.send('itemChanged', item);
   }
 
   static itemResize(item: GridsterItem, itemComponent: GridsterItemComponentInterface) {
@@ -239,7 +223,7 @@ export class AppComponent {
       scrollToNewItems: false
     };
 
-    ipcRenderer.send("mainWindowLoaded");
+    //ipcRenderer.send("mainWindowLoaded");
     /* ipcRenderer.send("requestComponents");
     ipcRenderer.on("resultSent", function (evt, result) {
       let list: Array<GridsterItem> = [];

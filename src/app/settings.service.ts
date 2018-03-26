@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs/Rx';
-import { ipcRenderer } from "electron";
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Injectable()
