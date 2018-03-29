@@ -6,11 +6,12 @@ const app = express();
 var redis = require("redis"),
     client = redis.createClient();
 
-var rpm, mph = 0;
-
 client.on("error", function (err) {
     console.log("Error " + err);
 });
+
+var fakenews = true;
+var ecuData = {'rpm':0, 'kph':0};
 
 // Parsers
 app.use(bodyParser.json());
@@ -23,7 +24,7 @@ app.route('/api/dash').get((req, res) => {
     res.send({
         dash: [{ speed: '100' }]
     });
-});  
+});
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
@@ -42,23 +43,52 @@ server.listen(port, () => console.log(`Running on localhost:${port}`));
 var io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
-  console.log('New client connected!');
+    console.log('New client connected!');
 
     //send data to client
-    setInterval(function(){
+    setInterval(function() {
 
-        if(rpm < 7200){
-            rpm += 11
-        } else{
-            rpm = 0
+        // simulating/testing on a desktop
+        if (fakenews) {
+            if (ecuData['rpm'] < 7200) {
+                ecuData['rpm'] += 11;
+            } else {
+                ecuData['rpm'] = 0;
+            }
+            if (ecuData['kph'] < 120) {
+                ecuData['kph'] += 1;
+            } else {
+                ecuData['kph'] = 0;
+            }
+        }
+        // real deployment
+        else {
+            client.ping(function (err, pong) {
+                // reply is "PONG" if the redis server is reachable
+                if (pong == "PONG") {
+                    // update every value in dictionary
+                    for (var key in Object.keys(ecuData)) {
+                        client.get(key, function(error, reply) {
+                            if (reply != null) {
+                                console.log("Warn: \'", key, "\' reply is null")
+                                reply = "0"; // if null, force to 0
+                            }
+                            else if (parseFloat(reply).isNaN()) {
+                                console.log("Warn: \'", key, "\' reply is NaN")
+                                reply = "0"; // if not parsable, force to 0
+                            }
+
+                            // finally set the dictionary value
+                            ecuData[key] = Math.floor(parseFloat(reply));
+                        });
+                    }
+                }
+                else {
+                    console.log("Error: Redis not available");
+                }
+            });
         }
 
-        if(mph < 120){
-            mph += 1
-        } else{
-            mph = 0
-        }
-
-      socket.emit('ecuData', {'rpm':Math.floor(rpm),'mph':Math.floor(mph)});
+        socket.emit('ecuData', ecuData);
     }, 16.6);
 });
