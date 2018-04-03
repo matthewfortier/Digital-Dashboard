@@ -1,4 +1,11 @@
 gridster {
   //background-color: #11121a;
   overflow: hidden;
+  transition: all .2s ease-in-out;
+  
+  &.editing {
+    transform: scale(.9);
+    border: 2px solid yellow;
+    transition: all .2s ease-in-out;
+  }
 }
