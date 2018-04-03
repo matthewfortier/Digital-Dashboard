@@ -1,14 +1,14 @@
 <div class="icons-container">
   <div class="icon">
     <i class="flaticon-battery"></i>
-    <span [style.color]="this.settings.sColor">50v</span>
+    <span [style.color]="this.settings.sColor">{{ this.dash.battery }}v</span>
   </div>
   <div class="icon">
     <i class="flaticon-oil"></i>
-    <span [style.color]="this.settings.sColor">70°</span>
+    <span [style.color]="this.settings.sColor">{{ this.dash.oil }}°</span>
   </div>
   <div class="icon">
     <i class="flaticon-engine-coolant"></i>
-    <span [style.color]="this.settings.sColor">100°</span>
+    <span [style.color]="this.settings.sColor">{{ this.dash.coolant }}°</span>
   </div>
 </div>

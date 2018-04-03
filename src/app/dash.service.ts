@@ -17,16 +17,27 @@ export interface Dash {
 export class DashService {
 
   dashboard: Array<GridsterItem>;
+  // Could use dictionary, would make value checking easier
   speed: Number;
   rpm: Number;
   range: Number;
   odom: Number;
+  oil: Number;
+  coolant: Number;
+  battery: Number;
+  fuelLvl: Number;
 
   constructor(private socket: Socket) {
 
     socket.on("ecuData", function (msg) {
-      this.speed = msg.kph;
-      this.rpm = msg.rpm;
+      this.speed = msg.SPEED;
+      this.rpm = msg.RPM;
+      this.range = msg.range; // not imp yet
+      this.odom = msg.DISTANCE_SINCE_DTC_CLEAR;
+      this.oil = msg.OIL_TEMP;
+      this.coolant = msg.COOLANT_TEMP;
+      this.battery = msg.CONTROL_MODULE_VOLTAGE;
+      this.fuelLvl = msg.FUEL_LEVEL;
     }.bind(this))
 
     // ipcRenderer.on("speed", function (evt, result) {

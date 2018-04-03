@@ -11,7 +11,15 @@ client.on("error", function (err) {
 });
 
 var fakenews = true;
-var ecuData = {'rpm':0, 'kph':0};
+var ecuData = {
+                'SPEED':0,
+                'RPM':0,
+                'DISTANCE_SINCE_DTC_CLEAR':0,
+                'OIL_TEMP':0,
+                'COOLANT_TEMP':0,
+                'CONTROL_MODULE_VOLTAGE':0,
+                'FUEL_LEVEL':0
+              };
 
 // Parsers
 app.use(bodyParser.json());
@@ -45,20 +53,24 @@ var io = require('socket.io')(server);
 io.on('connection', function (socket) {
     console.log('New client connected!');
 
-    //send data to client
+    // let backend know what obd codes we need
+    // hardcoded for now
+    client.set('OBDKEYS', "SPEED:RPM:DISTANCE_SINCE_DTC_CLEAR:OIL_TEMP:COOLANT_TEMP:CONTROL_MODULE_VOLTAGE:FUEL_LEVEL");
+
+    // send data to client
     setInterval(function() {
 
         // simulating/testing on a desktop
         if (fakenews) {
-            if (ecuData['rpm'] < 7200) {
-                ecuData['rpm'] += 11;
+            if (ecuData['RPM'] < 7200) {
+                ecuData['RPM'] += 11;
             } else {
-                ecuData['rpm'] = 0;
+                ecuData['RPM'] = 0;
             }
-            if (ecuData['kph'] < 120) {
-                ecuData['kph'] += 1;
+            if (ecuData['SPEED'] < 120) {
+                ecuData['SPEED'] += 1;
             } else {
-                ecuData['kph'] = 0;
+                ecuData['SPEED'] = 0;
             }
         }
         // real deployment
