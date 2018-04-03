@@ -1,8 +1,8 @@
 <div class="speedometer-container">
   <section id="speedo" [ngStyle]="{'border-color': this.settings.pColor, 'box-shadow': 'inset 0 0 350px' + this.settings.pColor}">
     <div id="speedo-content">
-        <span id="speed" *ngIf="this.settings.speedUnit == 'mph'; else elseBlock">{{ this.dash.speed }}</span> 
-        <ng-template #elseBlock><span id="speed">{{ this.settings.mphToKph(this.dash.speed) }}</span></ng-template>
+        <span id="speed" *ngIf="this.settings.speedUnit == 'kph'; else elseBlock">{{ this.dash.speed }}</span>
+        <ng-template #elseBlock><span id="speed">{{ this.settings.kphToMph(this.dash.speed) }}</span></ng-template>
         <br>
         <span id="speed-label">{{ this.settings.speedUnit }}</span>
     </div>

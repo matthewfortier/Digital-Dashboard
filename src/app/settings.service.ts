@@ -37,8 +37,8 @@ export class SettingsService {
     return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 + (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
   }
 
-  mphToKph(mph) {
-    return Math.floor(mph * 1.60934)
+  kphToMph(kph) {
+    return Math.floor(kph * 0.6214);
   }
 
   changeComponent(component) {
@@ -56,4 +56,3 @@ export class SettingsService {
     return this.dashboard.some(e => e.label === component)
   }
 }
-
