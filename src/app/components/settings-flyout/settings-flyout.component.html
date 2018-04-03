@@ -4,7 +4,8 @@
         <div class="setting">
             <div class="setting-content">
                 <label for="speed-unit">Speed Unit</label>
-                <select name="speed-uni" id="" value="{{ this.settings.speedUnit }}" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)" (change)="changeUnit($event)">
+                <select name="speed-uni" id="" value="{{ this.settings.speedUnit }}" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)"
+                    (change)="changeUnit($event)">
                     <option value="mph">mph</option>
                     <option value="kph">kph</option>
                 </select>
@@ -13,7 +14,7 @@
         <div class="setting">
             <div class="setting-content">
                 <label for="mac">OBDII MAC Address</label>
-                <input name="mac "type="text" value="{{ this.settings.macAddress }}" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)">
+                <input name="mac " type="text" value="{{ this.settings.macAddress }}" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)">
             </div>
         </div>
         <div class="setting">
@@ -32,6 +33,13 @@
             <div class="setting-content">
                 <label for="mac">Secondary Color</label>
                 <input id="picker" class="jscolor" [(ngModel)]="this.settings.sColor" (change)="changeSecondary($event)">
+            </div>
+        </div>
+        <div class="setting">
+            <div class="setting-content">
+                <label>Shadows</label>
+                <button *ngIf="!this.settings.shadows" (click)="this.settings.removeBoxShadows()" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)">Show</button>
+                <button *ngIf="this.settings.shadows" (click)="this.settings.removeBoxShadows()" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)">Hide</button>
             </div>
         </div>
     </div>

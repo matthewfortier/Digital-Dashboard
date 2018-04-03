@@ -2,6 +2,8 @@ import { Inject, Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs/Rx';
 import { DOCUMENT } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+declare var jquery: any;
+declare var $: any;
 
 @Injectable()
 export class SettingsService {
@@ -11,6 +13,7 @@ export class SettingsService {
   bgColor: String = "#11121a";
   pColor: String = "#f35f76";
   sColor: String = "#9cf9ec";
+  shadows: Boolean = true;
 
   dashboard = [
     { cols: 19, rows: 18, y: 2, x: 23, label: "SpeedometerComponent" },
@@ -39,6 +42,18 @@ export class SettingsService {
 
   kphToMph(kph) {
     return Math.floor(kph * 0.6214);
+  }
+
+  removeBoxShadows() {
+    if (this.shadows) {
+      $("*").css("box-shadow", "none");
+      this.shadows = false;
+      console.log("Remove Box Shadows");
+    } else {
+      $("*").css("box-shadow", "inherit");
+      this.shadows = true;
+      console.log("Add Box Shadows");
+    }
   }
 
   changeComponent(component) {

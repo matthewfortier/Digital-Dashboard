@@ -22,6 +22,11 @@ html, body {
 
 gridster-item {
   background: transparent !important;
+  cursor: pointer;
+
+  &:active, &:hover {
+    border: 2px solid yellow
+  }
 }
 
 .flyout-container {
