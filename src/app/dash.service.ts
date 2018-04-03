@@ -1,7 +1,7 @@
 import {
   CompactType, DisplayGrid, GridsterComponentInterface, GridsterConfig, GridsterItem, GridsterItemComponentInterface,
   GridType
-}  from 'angular-gridster2';
+} from 'angular-gridster2';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -24,8 +24,9 @@ export class DashService {
 
   constructor(private socket: Socket) {
 
-    socket.on("ecuData", function(msg) {
+    socket.on("ecuData", function (msg) {
       this.speed = msg.mph;
+      this.rpm = msg.rpm;
     }.bind(this))
 
     // ipcRenderer.on("speed", function (evt, result) {

@@ -1,6 +1,7 @@
 <gridster id="gridster" [options]="options" [style.backgroundColor]="this.settings.bgColor">
-  <gridster-item [item]="item" *ngFor="let item of dashboard">
+  <gridster-item [item]="item" *ngFor="let item of this.settings.dashboard">
     <ndc-dynamic [ndcDynamicComponent]="components[item.label]"></ndc-dynamic>
   </gridster-item>
 </gridster>
-<settings-flyout id="settings-flyout" class="hidden"></settings-flyout>  
+<settings-flyout id="settings-flyout" class="hidden"></settings-flyout>
+<component-selector-flyout id="component-selector-flyout" class="hidden"></component-selector-flyout>

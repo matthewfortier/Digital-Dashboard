@@ -1,0 +1,12 @@
+<div class="flyout-container" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 5)">
+  <span>Gauges Selector</span>
+  <div class="settings-container">
+    <div class="setting" *ngFor="let component of this.settings.components">
+      <div class="setting-content">
+        <label>{{ component.replace("Component", "") }}</label>
+        <button *ngIf="!this.settings.componentEnabled(component)" (click)="this.settings.changeComponent(component)" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)">Show</button>
+        <button *ngIf="this.settings.componentEnabled(component)" (click)="this.settings.changeComponent(component)" [style.backgroundColor]="this.settings.darken(this.settings.bgColor, 10)">Hide</button>
+      </div>
+    </div>
+  </div>
+</div>

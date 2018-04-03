@@ -27,6 +27,7 @@ import { IconsComponent } from './components/icons/icons.component';
 import { OdometerComponent } from './components/odometer/odometer.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { ComponentSelectorFlyoutComponent } from './components/component-selector-flyout/component-selector-flyout.component';
 const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
 
 @NgModule({
@@ -39,7 +40,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
     RangeComponent,
     SettingsFlyoutComponent,
     IconsComponent,
-    OdometerComponent
+    OdometerComponent,
+    ComponentSelectorFlyoutComponent
   ],
   imports: [
     BrowserModule,

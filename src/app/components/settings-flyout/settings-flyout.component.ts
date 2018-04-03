@@ -31,7 +31,7 @@ export class SettingsFlyoutComponent implements OnInit {
   }
 
   changeBg(event) {
-    console.log(event.srcElement.value)
+    console.log(event)
     this.settings.bgColor = "#" + event.srcElement.value
   }
 
