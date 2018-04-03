@@ -14,6 +14,17 @@ html, body {
   font-family: 'Roboto', sans-serif
 }
 
+#overlay {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999;
+
+  &.hidden {
+    display: none;
+  }
+}
+
 .gridster-grid {
   .column, .row {
     border-color: lighten(#11121a, 10) !important;
@@ -55,6 +66,13 @@ gridster-item {
           font-size: 18px;
           color: #999;
           border-radius: 5px;
+          transition: all .5s ease-in-out;
+
+          &:hover {
+            border: 1px solid yellow;
+            transform: scale(1.01);
+            transition: all .2s ease-in-out;
+          }
       }
 
       .setting-content {

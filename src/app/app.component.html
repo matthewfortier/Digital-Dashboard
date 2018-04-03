@@ -1,3 +1,4 @@
+<div id="overlay"></div>
 <gridster id="gridster" [options]="options" [style.backgroundColor]="this.settings.bgColor">
   <gridster-item [item]="item" *ngFor="let item of this.settings.dashboard">
     <ndc-dynamic [ndcDynamicComponent]="components[item.label]"></ndc-dynamic>
