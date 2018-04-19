@@ -28,7 +28,8 @@ import { OdometerComponent } from './components/odometer/odometer.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { ComponentSelectorFlyoutComponent } from './components/component-selector-flyout/component-selector-flyout.component';
-const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
+const myURL = "http://localhost:4200"
+const config: SocketIoConfig = { url: myURL, options: {} };
 
 @NgModule({
   declarations: [
