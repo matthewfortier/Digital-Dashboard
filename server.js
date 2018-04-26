@@ -50,7 +50,7 @@ io.on('connection', function (socket) {
                     'DISTANCE_SINCE_DTC_CLEAR':0,
                     'OIL_TEMP':0,
                     'COOLANT_TEMP':0,
-                    'ELM_VOLTAGE':0,
+                    'CONTROL_MODULE_VOLTAGE':0,
                     'FUEL_LEVEL':0
                 };
 
