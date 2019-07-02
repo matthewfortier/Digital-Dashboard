@@ -1,6 +1,7 @@
 ![alt text](https://i.imgur.com/Ehpu3XQ.png)
-# Digital Dash
+# Digital Dash UI
 a Champlain College Computer Science and Innovation Capstone Project
+> the back-end for this project can be found here: https://github.com/jschulberger/capstone-dashboard-docker
 
 ![alt text](https://i.imgur.com/sKSnrGl.png "Ideal configuration and aspect ratio")
 ![alt text](https://i.imgur.com/Wass0i5.png "Settings fly-outs")
@@ -12,7 +13,6 @@ a Champlain College Computer Science and Innovation Capstone Project
 * In root directory of project run ```npm install``` <br>
 * Depeding on your Node configuration, you may have to install the Angular CLI manually: ```npm install -g @angular/cli@latest```, remove -g if you want to install locally <br>
 * ```npm start``` and navigate to `http://localhost:4200/` in Chrome (browser support limited) <br>
-
 
 ## Development server
 
